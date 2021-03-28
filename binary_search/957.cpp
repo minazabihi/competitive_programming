@@ -23,4 +23,5 @@ int main()
         }
         cout<<max<<" "<<start<<" "<<end<<endl;
     }
+    return 0;
 }
