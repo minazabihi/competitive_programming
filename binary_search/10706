@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+vector<long long> lens(1,0); 
+
+void generate_lens(){
+    int total_len=0;
+    
+    for(int i=1;i<35000;i++){
+        int len = (int)log10(i)+1;
+        total_len += len;
+        
+        lens.push_back(total_len+lens.back());
+    }
+}
+
+
+int main()
+{
+    
+    
+    generate_lens();
+    int t,num;
+    cin >> t;
+    while(t--){
+        string s="";
+        cin >> num;
+        int low = 0, high = 34999;
+
+        while(low<high){
+            int mid = (low+high)/2+1;
+            if(lens[mid] >= num) high = mid-1;
+            else low = mid;
+        }
+        for(int i=1;i<=high+1; i++){
+            s+=to_string(i);
+        }
+        cout<<s[num-lens[high]-1]<<endl;
+       
+    }
+}
