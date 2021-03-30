@@ -37,4 +37,5 @@ int main()
         cout<<s[num-lens[high]-1]<<endl;
        
     }
+    return 0;
 }
