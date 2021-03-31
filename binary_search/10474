@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int a,b;
+    pair<int,int> low,high,mid;
+    while(scanf("%d %d",&a,&b),!(a==1 && b==1)){
+        string res = "";
+        low = {0,1};
+        high = {1,0};
+        mid = {1,1};
+        while(mid.first != a || mid.second != b){
+            
+            int v1 = a*mid.second, v2 = b*mid.first;
+            if(v1<v2){ 
+                high = mid;
+                mid = {low.first+mid.first, low.second+mid.second};
+                res += 'L';
+            } else { 
+                low = mid;
+                mid = {mid.first+high.first, mid.second+high.second};
+                res += 'R';
+            }
+        }
+        cout << res << endl;
+    }
+}
